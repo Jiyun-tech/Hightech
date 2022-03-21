@@ -1,0 +1,30 @@
+// <Calculating changes>
+// User inputs the two numbers which are the paid money and the change 
+// Print the calculation of how many coins and bills are needed for the change
+
+package March21;
+import java.util.Scanner;
+public class Change {
+
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		
+		int n = scanner.nextInt(); // Money received
+		int m = scanner.nextInt(); // Actual price to be paid
+
+		change(n, m);
+		
+	} 
+	static void change(int n, int m) {
+		int c = n-m; // change
+		System.out.println();
+		System.out.println("change : " + c);
+		System.out.println("10000 - " + c/10000);
+		System.out.println("5000 - " + c%10000/5000);
+		System.out.println("1000 - " + c%10000%5000/1000);
+		System.out.println("500 - " + c%10000%5000%1000/500);
+		System.out.println("100 - " + c%10000%5000%1000%500/100);
+		System.out.println("50 - " + c%10000%5000%1000%500%100/50);
+		System.out.println("10 - " + c%10000%5000%1000%500%100%50/10);
+	}
+}
