@@ -35,6 +35,8 @@ public class Operator {
 			case 4:
 				result = n / m;
 				break;
+			default:
+				System.out.prinln("error!"
 		}
 		System.out.println(result);
 	}
