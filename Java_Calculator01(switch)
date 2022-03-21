@@ -40,7 +40,7 @@ public class Operator {
 				System.out.println(result);
 				break;
 			default:
-				System.out.prinln("error!");
+				System.out.println("error!");
 		}
 	}
 }
