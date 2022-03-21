@@ -1,0 +1,26 @@
+// <Base 10 to Base 3 Converter>
+// User inputs a number of base 10
+// Print the number of base 3 which is the same as the input number
+package March21;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Scanner;
+public class Base3converter {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		ArrayList<Integer> base3 = new ArrayList<Integer>();
+		
+		int base10 = sc.nextInt();
+		
+		base3.add(base10%3); // input the remainder into the ArrayList
+		while (base10/3 != 0) { // in case base10 >= 3
+			base10 = base10/3;
+			base3.add(base10%3); // input the remainder into the ArrayList
+		}
+		
+		for (int i = base3.size()-1; i >= 0; i--) {
+			System.out.print(base3.get(i));
+		}
+	}
+}
