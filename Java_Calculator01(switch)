@@ -1,0 +1,41 @@
+// <Calculator>
+// User inputs an operation number(1 : +, 2 : -, 3 : *, 4 : /)
+// User inputs the two numbers
+// Print the calculated result
+package March21;
+import java.util.Scanner;
+public class Operator {
+
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("What operation do you want?");
+		System.out.println("1. +");
+		System.out.println("2. -");
+		System.out.println("3. *");
+		System.out.println("4. /");
+		System.out.println("--->");
+		
+		int operator = scanner.nextInt();
+		
+		System.out.println("Input two numbers");
+		int n = scanner.nextInt();
+		int m = scanner.nextInt();
+		int result = 0;
+		
+		switch (operator) {
+			case 1:
+				result = n + m;
+				break;
+			case 2:
+				result = n - m;
+				break;
+			case 3:
+				result = n * m;
+				break;
+			case 4:
+				result = n / m;
+				break;
+		}
+		System.out.println(result);
+	}
+}
