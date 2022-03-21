@@ -1,0 +1,47 @@
+// <Comparing the two strings>
+// User inputs the two strings
+// Show the result if those two strings are the same after relocation
+package March21;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Scanner;
+public class Review01_ComparingAlphabet {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		ArrayList<Character> string1 = new ArrayList<Character>();
+		ArrayList<Character> string2 = new ArrayList<Character>();
+		
+		while (true) {
+			String input1 = sc.next(); 
+			String input2 = sc.next();
+			
+			char[] s1 = new char[input1.length()]; // input the 1st word to char array
+			for (int i = 0; i < input1.length(); i++) {
+				s1[i] = input1.charAt(i);
+			}
+			char[] s2 = new char[input2.length()]; // input the 2nd word to char array
+			for (int i = 0; i < input1.length(); i++) {
+				s2[i] = input2.charAt(i);
+			}
+			
+			for (int i=0; i < s1.length; i++) { // input the 1st char array to ArrayList1
+			string1.add(s1[i]);
+			}
+			
+			for (int i=0; i < s2.length; i++) { // input the 2nd char array to ArrayList2
+			string2.add(s2[i]);
+			}
+			
+			Collections.sort(string1); // ascending sort
+			Collections.sort(string2); // ascending sort
+			
+			if (string1.equals(string2)) { // comparison of two ascending sorted ArrayLists.
+				System.out.println("YES");
+			} else {
+				System.out.println("NO");
+			}
+			System.out.println();
+		}
+	}
+}
