@@ -1,0 +1,15 @@
+package March21;
+import java.util.Scanner;
+public class Print99dan {
+
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		
+		System.out.println("What number do you want?(range : 2~9)");
+		int num = scanner.nextInt();
+		
+		for (int i = 2; i < 10; i++) {
+			System.out.printf("%d X %d = %d%n", num, i, num * i);
+		}
+	}
+}
