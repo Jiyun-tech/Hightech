@@ -1,0 +1,31 @@
+// <Comparing the velocities in different units>
+// User inputs the three values
+// Each is m/s, km/h, m/ms in order
+// Comparing the values and print the quickest one
+package March21;
+import java.util.Scanner;
+public class Review02_ComparingUnit {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		int ms = sc.nextInt(); // first value => m/s
+		int kmh = sc.nextInt(); // second value => km/h
+		float mms = sc.nextFloat(); // third value => m/ms
+		
+		int cvtms = ms;
+		int cvtkmh = kmh * 1000 / (60*60);
+		float cvtmms = mms * 1000;
+		System.out.println();
+		
+		if ( cvtms >= cvtkmh && cvtkmh >= cvtmms) { // in case m/s is the fastest one
+			System.out.println(ms + "m/s");
+		} else if ( cvtkmh > cvtms && cvtkmh > cvtmms) { // in case km/h is the fastest one
+			System.out.println(kmh + "km/h");
+		} else if ( cvtmms > cvtms && cvtmms > cvtkmh) { // in case m/ms is the fastest one
+			System.out.println(mms + "m/ms");
+		} else {
+			System.out.println("error! try again");
+		}
+	}
+}
