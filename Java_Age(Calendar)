@@ -22,13 +22,13 @@ public class R2 {
 		String currentyear = "" + currentDate[0] + currentDate[1] + currentDate[2] + currentDate[3];
 		String currentmonth = "" + currentDate[4] + currentDate[5];
 		String currentday = "" + currentDate[6] + currentDate[7];
-		cl1.set(Integer.parseInt(currentyear), Integer.parseInt(currentmonth)-1, Integer.parseInt(currentday));
+		cl1.set(Integer.parseInt(currentyear), Integer.parseInt(currentmonth), Integer.parseInt(currentday));
 
 		// birthday in calendar2
 		String bdyear = "" + bd[0] + bd[1] + bd[2] + bd[3];
 		String bdmonth = "" + bd[4] + bd[5];
 		String bdday = "" + bd[6] + bd[7];
-		cl2.set(Integer.parseInt(bdyear), Integer.parseInt(bdmonth)-1, Integer.parseInt(bdday));
+		cl2.set(Integer.parseInt(bdyear), Integer.parseInt(bdmonth), Integer.parseInt(bdday));
 		
 
 		int kage = cl1.get(Calendar.YEAR) - cl2.get(Calendar.YEAR) + 1;
