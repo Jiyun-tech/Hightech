@@ -1,0 +1,47 @@
+// <Calculating ages in international age and in Korean age>
+// User inputs the current date and birthday
+// Show the ages in international age and in Korean age
+package Marh22;
+import java.util.Scanner;
+import java.util.Calendar;
+import java.util.ArrayList;
+public class R2 {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		Calendar cl1 = Calendar.getInstance();
+		Calendar cl2 = Calendar.getInstance();
+	
+		// get the input date in character array to split each numbers
+		System.out.println("Current Date : ");
+		char[] currentDate = sc.nextLine().toCharArray();
+		System.out.println("Birthday : ");
+		char[] bd = sc.nextLine().toCharArray();
+		
+		// current date in calendar1
+		String currentyear = "" + currentDate[0] + currentDate[1] + currentDate[2] + currentDate[3];
+		String currentmonth = "" + currentDate[4] + currentDate[5];
+		String currentday = "" + currentDate[6] + currentDate[7];
+		cl1.set(Integer.parseInt(currentyear), Integer.parseInt(currentmonth)-1, Integer.parseInt(currentday));
+
+		// birthday in calendar2
+		String bdyear = "" + bd[0] + bd[1] + bd[2] + bd[3];
+		String bdmonth = "" + bd[4] + bd[5];
+		String bdday = "" + bd[6] + bd[7];
+		cl2.set(Integer.parseInt(bdyear), Integer.parseInt(bdmonth)-1, Integer.parseInt(bdday));
+		
+
+		int kage = cl1.get(Calendar.YEAR) - cl2.get(Calendar.YEAR) + 1;
+		int iage = 0;
+		if (cl1.get(Calendar.MONTH) > cl2.get(Calendar.MONTH)) {
+			iage = kage-1;
+		} else if (cl1.get(Calendar.MONTH) == cl2.get(Calendar.MONTH) && cl1.get(Calendar.DATE) >= cl2.get(Calendar.DATE)) {
+			iage = kage-1;
+		} else {
+			iage = kage-2;
+		}
+		
+		System.out.println(kage+" years old in Korean age");
+		System.out.println(iage+" years old in international age");
+	}
+}
