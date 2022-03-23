@@ -1,0 +1,26 @@
+// <Practice for Recursive Function>
+// User inputs a number between 2 to 9.
+// Print a multiplication table of the number using recursive function.
+
+package March23;
+import java.util.Scanner;
+public class Multiplication_Table {
+	
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		int N = sc.nextInt();
+		print99dan(N, 1);
+	} 
+	
+	public static void print99dan (int num, int count) {
+		if (num > 1 && num < 10) {
+			if (count > 0 && count < 10) {
+				System.out.println(num + " X " + count + " = " + num*count);
+				print99dan(num, ++count);
+			}
+		} else {
+			System.out.println("Error! Try another number.");
+		}
+	}
+}
