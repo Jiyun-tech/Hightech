@@ -1,0 +1,39 @@
+package March23;
+import java.util.Scanner;
+public class VedicMath01 {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Imput the first number for multiplication");
+		int N = sc.nextInt();
+		System.out.println("Imput the second number for multiplication");
+		int M = sc.nextInt();
+		
+		if (N > 0 && N < 100 && M > 0 && M < 100) {
+			//preparation
+			int num01 = 100 - N;
+			int num02 = 100 - M;
+			// calculation for the first two numbers
+			int firstresult01 = num01 + num02;
+			int firstresult02 = 100 - (firstresult01);
+			// calculation for the last two numbers
+			int lastresult = num01 * num02;
+			// final result
+			int finalresult = firstresult02 * 100 + lastresult;
+			
+			System.out.println("▶ " + N + "\tX\t" + M + " = " + finalresult);
+			System.out.println();
+			System.out.println(" 100"+"-"+N+"\t"+" 100"+"-"+M);
+			System.out.println("   "+num01+"\t+   "+num02+"\t= "+firstresult01);
+			System.out.println("   "+num01+"\tx   "+num02+"\t= "+lastresult);
+			System.out.println();
+			System.out.println(" First two digits : 100 - "+firstresult01+" = "+firstresult02);
+			System.out.println(" Last two digits : "+lastresult );
+			System.out.println(" Result : "+finalresult);
+		}
+		else {
+			System.out.println("Error!");
+		}
+	}
+}
