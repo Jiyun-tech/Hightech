@@ -1,0 +1,50 @@
+package March23;
+
+import java.util.Scanner;
+
+public class VedicMath02 {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Imput the multiplication expression for caculation (e.g. 10 X 10)");
+		String expression = sc.nextLine().toLowerCase(); // replace all alphabets to lower cases
+	
+		if (expression.contains("x")) {
+			String expression2 = expression.replace(" ", ""); // remove blanks
+			String[] expression3 = expression2.split("x"); // split numbers by x to put into string array
+			int N = Integer.parseInt(expression3[0]); // first number (String -> Integer)
+			int M = Integer.parseInt(expression3[1]); // second number (String -> Integer)
+			
+			
+			if (N > 0 && N < 100 && M > 0 && M < 100) {
+				//preparation
+				int num01 = 100 - N;
+				int num02 = 100 - M;
+				// calculation for the first two numbers
+				int firstresult01 = num01 + num02;
+				int firstresult02 = 100 - (firstresult01);
+				// calculation for the last two numbers
+				int lastresult = num01 * num02;
+				// final result
+				int finalresult = firstresult02 * 100 + lastresult;
+				
+				System.out.println("▶ " + N + "\tX\t" + M + " = " + finalresult);
+				System.out.println();
+				System.out.println(" 100"+"-"+N+"\t"+" 100"+"-"+M);
+				System.out.println("   "+num01+"\t+   "+num02+"\t= "+firstresult01);
+				System.out.println("   "+num01+"\tx   "+num02+"\t= "+lastresult);
+				System.out.println();
+				System.out.println(" First two digits : 100 - "+firstresult01+" = "+firstresult02);
+				System.out.println(" Last two digits : "+lastresult );
+				System.out.println(" Result : "+finalresult);
+			}
+			else {
+				System.out.println("Error!");
+			}
+		}
+		else {
+			System.out.println("error!");
+		}
+	}
+}
