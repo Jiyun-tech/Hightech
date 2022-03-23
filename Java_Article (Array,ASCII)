@@ -20,7 +20,7 @@ public class Consonant01 {
 				if (text[i].equals("a")) {
 					char[] word = text[i+1].toCharArray();
 					int wordnum = (int)word[0];
-					if (wordnum == 97 || wordnum == 101 || wordnum == 105 || wordnum == 111 || wordnum == 117 || wordnum == 65 || wordnum == 69 || wordnum == 73 || wordnum == 79 || wordnum == 85 ) {
+					if (wordnum == 97 || wordnum == 101 || wordnum == 105 || wordnum == 111 || wordnum == 117 || wordnum == 65 || wordnum == 69 || wordnum == 73 || wordnum == 79 || wordnum == 85) {
 						text[i] = "an";
 					}
 				} else if (text[i].equals("A")) {
