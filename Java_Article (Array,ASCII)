@@ -22,55 +22,30 @@ public class Consonant01 {
 					int wordnum = (int)word[0];
 					if (wordnum == 97 || wordnum == 101 || wordnum == 105 || wordnum == 111 || wordnum == 117) {
 						text[i] = "an";
-						for (int k = 0; k < text.length; k++) {
-							System.out.print(text[k] + " ");
-						}
-					} else {
-						for (int j = 0; j < text.length; j++) {
-							System.out.print(text[j] + " ");
-							}
-						}
+					}
 				} else if (text[i].equals("A")) {
 					char[] word = text[i+1].toCharArray();
 					int wordnum = (int)word[0];
 					if (wordnum == 97 || wordnum == 101 || wordnum == 105 || wordnum == 111 || wordnum == 117) {
 						text[i] = "An";
-						for (int k = 0; k < text.length; k++) {
-							System.out.print(text[k] + " ");
-						}
-					} else {
-						for (int j = 0; j < text.length; j++) {
-							System.out.print(text[j] + " ");
-							}
-						}
+					}
 				} else if (text[i].equals("an")) {
 					char[] word = text[i+1].toCharArray();
 					int wordnum = (int)word[0];
-					if (wordnum == 97 || wordnum == 101 || wordnum == 105 || wordnum == 111 || wordnum == 117) {
-						for (int k = 0; k < text.length; k++) {
-							System.out.print(text[k] + " ");
-						}
-					} else {
+					if (wordnum != 97 && wordnum != 101 && wordnum != 105 && wordnum != 111 && wordnum != 117) {
 						text[i] = "a";
-						for (int j = 0; j < text.length; j++) {
-							System.out.print(text[j] + " ");
-							}
-						}
+					}
 				} else if (text[i].equals("An")) {
 					char[] word = text[i+1].toCharArray();
 					int wordnum = (int)word[0];
-					if (wordnum == 97 || wordnum == 101 || wordnum == 105 || wordnum == 111 || wordnum == 117) {
-						for (int k = 0; k < text.length; k++) {
-							System.out.print(text[k] + " ");
-						}
-					} else {
+					if (wordnum != 97 && wordnum != 101 && wordnum != 105 && wordnum != 111 && wordnum != 117) {
 						text[i] = "A";
-						for (int j = 0; j < text.length; j++) {
-							System.out.print(text[j] + " ");
-							}
-						}
-				} else {
-				}
+					}
+			
+				} else {}
+			}
+			for (int j = 0; j < text.length; j++) {
+				System.out.print(text[j] + " ");
 			}
 		}
 	}
