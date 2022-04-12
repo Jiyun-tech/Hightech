@@ -10,70 +10,70 @@
 #include <string.h>
 
 int main () {
-	float FXRATE_Input[]= {1233.5, 9.87, 1342.42, 193.21, 1604.97}; // °¢ ¿ÜÈ­ÀÇ È¯À² ¹è¿­·Î ¼±¾ğ 
-	float FXRATE;													// ¼±ÅÃÇÑ ¿ÜÈ­¿¡ µû¸¥ È¯À² ÇÒ´çÇÒ º¯¼ö. 
-	float appliedFXRATE = 0; 			// if Á¶°Ç¹® È°¿ëÇÏ¿© ¼±ÅÃÇÏ´Â ¿ÜÈ­ÀÇ È¯À²À» ÇØ´ç º¯¼ö¿¡ ÇÒ´ç ¿¹Á¤ 
-	int inputKRW = 0; 					// scanf·Î ¹ŞÀ» ¿øÈ­ 
-	int inputNumber = 0;  				// scanf·Î ¹ŞÀ» ¿ÜÈ­ ¼±ÅÃ 
-	float outputForeignCurrency = 0; 	// °è»êÇÏ¿© ³ª¿Ã ¿ÜÈ­ È¯Àü °ª 
-	int outputForeignCurrencyFinal = 0; // °è»êÇÏ¿© ³ª¿Ã ¿ÜÈ­ È¯Àü °ª (10 or 100 ´ÜÀ§ ¾Æ·¡ Àı»è) 
-	int returnKRW = 0; 					// ¿øÈ­ °Å½º¸§µ· 
-	int returnKRWFinal = 0; 			// ¿øÈ­ °Å½º¸§µ· (10¿ø ´ÜÀ§ ¾Æ·¡ Àı»è) 
+	float FXRATE_Input[]= {1233.5, 9.87, 1342.42, 193.21, 1604.97}; // ê° ì™¸í™”ì˜ í™˜ìœ¨ ë°°ì—´ë¡œ ì„ ì–¸ 
+	float FXRATE;							// ì„ íƒí•œ ì™¸í™”ì— ë”°ë¥¸ í™˜ìœ¨ í• ë‹¹í•  ë³€ìˆ˜. 
+	float appliedFXRATE = 0; 			// if ì¡°ê±´ë¬¸ í™œìš©í•˜ì—¬ ì„ íƒí•˜ëŠ” ì™¸í™”ì˜ í™˜ìœ¨ì„ í•´ë‹¹ ë³€ìˆ˜ì— í• ë‹¹ ì˜ˆì • 
+	int inputKRW = 0; 				// scanfë¡œ ë°›ì„ ì›í™” 
+	int inputNumber = 0;  				// scanfë¡œ ë°›ì„ ì™¸í™” ì„ íƒ 
+	float outputForeignCurrency = 0; 		// ê³„ì‚°í•˜ì—¬ ë‚˜ì˜¬ ì™¸í™” í™˜ì „ ê°’ 
+	int outputForeignCurrencyFinal = 0; 		// ê³„ì‚°í•˜ì—¬ ë‚˜ì˜¬ ì™¸í™” í™˜ì „ ê°’ (10 or 100 ë‹¨ìœ„ ì•„ë˜ ì ˆì‚­) 
+	int returnKRW = 0; 				// ì›í™” ê±°ìŠ¤ë¦„ëˆ 
+	int returnKRWFinal = 0; 			// ì›í™” ê±°ìŠ¤ë¦„ëˆ (10ì› ë‹¨ìœ„ ì•„ë˜ ì ˆì‚­) 
 	int returnKRW1000 = 0, returnKRW500 = 0, returnKRW100 = 0, returnKRW50 = 0, returnKRW10 = 0;
-										// ¿øÈ­ °Å½º¸§µ· Ãâ·Â ´ÜÀ§ 
+										// ì›í™” ê±°ìŠ¤ë¦„ëˆ ì¶œë ¥ ë‹¨ìœ„ 
 	int returnForeignCurrency10000 = 0, returnForeignCurrency5000 = 0, returnForeignCurrency1000 = 0,
 		returnForeignCurrency500 = 0, returnForeignCurrency200 = 0, returnForeignCurrency100 = 0,
 		returnForeignCurrency50 = 0, returnForeignCurrency20 = 0, returnForeignCurrency10 = 0, 
-		returnForeignCurrency5 = 0; 	// ¿ÜÈ­ °Å½º¸§µ· Ãâ·Â ´ÜÀ§ 
-	char currencyNameInput[][10] = {"´Ş·¯","¿£","À¯·Î","À§¾È","ÆÄ¿îµå"};	//°¢ ¿ÜÈ­ÀÇ ÀÌ¸§ ÇØ´ç ¹è¿­·Î ¼±¾ğ 
-	char *currencyName;														//¼±ÅÃÇÑ ¿ÜÈ­¿¡ µû¸¥ È­Æó ÀÌ¸§ ÇÒ´çÇÒ º¯¼ö. 
+		returnForeignCurrency5 = 0; 	// ì™¸í™” ê±°ìŠ¤ë¦„ëˆ ì¶œë ¥ ë‹¨ìœ„ 
+	char currencyNameInput[][10] = {"ë‹¬ëŸ¬","ì—”","ìœ ë¡œ","ìœ„ì•ˆ","íŒŒìš´ë“œ"};	//ê° ì™¸í™”ì˜ ì´ë¦„ í•´ë‹¹ ë°°ì—´ë¡œ ì„ ì–¸ 
+	char *currencyName;							//ì„ íƒí•œ ì™¸í™”ì— ë”°ë¥¸ í™”í ì´ë¦„ í• ë‹¹í•  ë³€ìˆ˜. 
 
-	while(true) { // ¿øÈ­ ÀÔ·Â & È¯Àü °è¼Ó ¹İº¹ 
-		printf("È¯ÀüÀ» ¿øÇÏ´Â ±İ¾×À» ÀÔ·ÂÇÏ¼¼¿ä(¿øÈ­) : ");
+	while(true) { // ì›í™” ì…ë ¥ & í™˜ì „ ê³„ì† ë°˜ë³µ 
+		printf("í™˜ì „ì„ ì›í•˜ëŠ” ê¸ˆì•¡ì„ ì…ë ¥í•˜ì„¸ìš”(ì›í™”) : ");
 		scanf("%d", &inputKRW);
 		do {
-			printf("È¯ÀüÀ» ¿øÇÏ´Â ¿ÜÈ­ ¹øÈ£¸¦ ¼±ÅÃÇÏ¼¼¿ä. (1:USD, 2:JPY, 3:EURO, 4.CNY, 5:GBP) : ");
+			printf("í™˜ì „ì„ ì›í•˜ëŠ” ì™¸í™” ë²ˆí˜¸ë¥¼ ì„ íƒí•˜ì„¸ìš”. (1:USD, 2:JPY, 3:EURO, 4.CNY, 5:GBP) : ");
 			scanf("%d", &inputNumber);
 		} while (inputNumber < 1 || inputNumber > 5);
 		printf("============================================================\n");
 		
 		
-		// È¯Àü °è»ê ½ÃÀÛ 
+		// í™˜ì „ ê³„ì‚° ì‹œì‘ 
 		FXRATE = FXRATE_Input[inputNumber-1];
 		outputForeignCurrency = inputKRW/FXRATE;
 		if (inputNumber == 1 || inputNumber == 3 || inputNumber == 5) { // USD, EUR, GBP 
-			outputForeignCurrencyFinal = ((int)outputForeignCurrency)/5*5; // 5 ¾Æ·¡·Î Àı»è
+			outputForeignCurrencyFinal = ((int)outputForeignCurrency)/5*5; // 5 ì•„ë˜ë¡œ ì ˆì‚­
 		} else if (inputNumber == 2) { 									// JPY
-			outputForeignCurrencyFinal = ((int)outputForeignCurrency)/100*100; // 100 ¾Æ·¡·Î Àı»è
+			outputForeignCurrencyFinal = ((int)outputForeignCurrency)/100*100; // 100 ì•„ë˜ë¡œ ì ˆì‚­
 		} else if (inputNumber == 4) { 									// CNY
-			outputForeignCurrencyFinal = ((int)outputForeignCurrency)/10*10; // 10 ¾Æ·¡·Î Àı»è
+			outputForeignCurrencyFinal = ((int)outputForeignCurrency)/10*10; // 10 ì•„ë˜ë¡œ ì ˆì‚­
 		}
 		currencyName = currencyNameInput[inputNumber-1];
 		
-		// ¿øÈ­ °Å½º¸§µ· °è»ê ½ÃÀÛ 
+		// ì›í™” ê±°ìŠ¤ë¦„ëˆ ê³„ì‚° ì‹œì‘ 
 		returnKRW = (int)(inputKRW - outputForeignCurrencyFinal * FXRATE); 
 		returnKRWFinal = returnKRW - returnKRW%10;
 		
-		// ¿øÈ­ °Å½º¸§µ· µ¹·ÁÁÖ´Â ¹æ¹ı °è»ê (È­Æó ´ÜÀ§º° ¼ö·®) 
+		// ì›í™” ê±°ìŠ¤ë¦„ëˆ ëŒë ¤ì£¼ëŠ” ë°©ë²• ê³„ì‚° (í™”í ë‹¨ìœ„ë³„ ìˆ˜ëŸ‰) 
 		returnKRW1000 = returnKRWFinal/1000;
 		returnKRW500 = returnKRWFinal%1000/500;
 		returnKRW100 = returnKRWFinal%1000%500/100;
 		returnKRW50 = returnKRWFinal%1000%500%100/50;
 		returnKRW10 = returnKRWFinal%1000%500%100%50/10;
 		
-		// Ãâ·Â - ±âÁØ È¯À², ¿ø±İ, È¯Àü °á°ú 
-		printf("±âÁØ È¯À² : %10.2f¿ø/%s\n", FXRATE, currencyName);
-		printf("¿ø±İ : %d ¿ø\n", inputKRW);
-		printf("*È¯Àü °á°ú*\n");
-		printf("È¯Àü :  %d %s\n", outputForeignCurrencyFinal, currencyName);
+		// ì¶œë ¥ - ê¸°ì¤€ í™˜ìœ¨, ì›ê¸ˆ, í™˜ì „ ê²°ê³¼ 
+		printf("ê¸°ì¤€ í™˜ìœ¨ : %10.2fì›/%s\n", FXRATE, currencyName);
+		printf("ì›ê¸ˆ : %d ì›\n", inputKRW);
+		printf("*í™˜ì „ ê²°ê³¼*\n");
+		printf("í™˜ì „ :  %d %s\n", outputForeignCurrencyFinal, currencyName);
 		
-		// ¿ÜÈ­º° È¯Àü ±İ¾×À» °¢ È­Æó ´ÜÀ§¿¡ ¸ÂÃß¾î ÁÖ´Â ¹æ¹ı °è»ê (È­Æó ´ÜÀ§º° ¼ö·®) 
-		if (inputNumber == 1) { 				// USD : 100, 50, 10, 5 
+		// ì™¸í™”ë³„ í™˜ì „ ê¸ˆì•¡ì„ ê° í™”í ë‹¨ìœ„ì— ë§ì¶”ì–´ ì£¼ëŠ” ë°©ë²• ê³„ì‚° (í™”í ë‹¨ìœ„ë³„ ìˆ˜ëŸ‰) 
+		if (inputNumber == 1) { 			// USD : 100, 50, 10, 5 
 			returnForeignCurrency100 = outputForeignCurrencyFinal/100;
 			returnForeignCurrency50 = outputForeignCurrencyFinal%100/50;
 			returnForeignCurrency10 = outputForeignCurrencyFinal%100%50/10;
 			returnForeignCurrency5 = outputForeignCurrencyFinal%100%50%10/5;
-			printf(" ==> 100%s X %d°³, 50%s X %d°³, 10%s X %d, 5%s X %d°³\n"
+			printf(" ==> 100%s X %dê°œ, 50%s X %dê°œ, 10%s X %d, 5%s X %dê°œ\n"
 					, currencyName, returnForeignCurrency100
 					, currencyName, returnForeignCurrency50
 					, currencyName, returnForeignCurrency10
@@ -84,7 +84,7 @@ int main () {
 			returnForeignCurrency1000 = outputForeignCurrencyFinal%10000%5000/1000;
 			returnForeignCurrency500 = outputForeignCurrencyFinal%10000%5000%1000/500;
 			returnForeignCurrency100 = outputForeignCurrencyFinal%10000%5000%1000%500/100;
-			printf(" ==> 10000%s X %d°³, 5000%s X %d°³, 1000%s X %d°³, 500%s X %d°³, 100%s X %d°³\n"
+			printf(" ==> 10000%s X %dê°œ, 5000%s X %dê°œ, 1000%s X %dê°œ, 500%s X %dê°œ, 100%s X %dê°œ\n"
 					, currencyName, returnForeignCurrency10000
 					, currencyName, returnForeignCurrency5000
 					, currencyName, returnForeignCurrency1000
@@ -98,7 +98,7 @@ int main () {
 			returnForeignCurrency20 = outputForeignCurrencyFinal%500%200%100%50/20;
 			returnForeignCurrency10 = outputForeignCurrencyFinal%500%200%100%50%20/10;
 			returnForeignCurrency5 = outputForeignCurrencyFinal%500%200%100%50%20%10/5;
-			printf(" ==> 500%s X %d°³, 200%s X %d°³, 100%s X %d°³, 50%s X %d°³, 20%s x %d°³, 10%s X %d°³, 5%s X %d°³\n"
+			printf(" ==> 500%s X %dê°œ, 200%s X %dê°œ, 100%s X %dê°œ, 50%s X %dê°œ, 20%s x %dê°œ, 10%s X %dê°œ, 5%s X %dê°œ\n"
 					, currencyName, returnForeignCurrency500
 					, currencyName, returnForeignCurrency200
 					, currencyName, returnForeignCurrency100
@@ -111,7 +111,7 @@ int main () {
 			returnForeignCurrency50 = outputForeignCurrencyFinal%100/50;
 			returnForeignCurrency20 = outputForeignCurrencyFinal%100%50/20;
 			returnForeignCurrency10 = outputForeignCurrencyFinal%100%50%20/10;
-			printf(" ==> 100%s X %d°³, 50%s X %d°³, 20%s x %d°³, 10%s X %d°³\n"
+			printf(" ==> 100%s X %dê°œ, 50%s X %dê°œ, 20%s x %dê°œ, 10%s X %dê°œ\n"
 					, currencyName, returnForeignCurrency100
 					, currencyName, returnForeignCurrency50
 					, currencyName, returnForeignCurrency20
@@ -121,16 +121,16 @@ int main () {
 			returnForeignCurrency20 = outputForeignCurrencyFinal%50/20;
 			returnForeignCurrency10 = outputForeignCurrencyFinal%50%20/10;
 			returnForeignCurrency5 = outputForeignCurrencyFinal%50%20%10/5;
-			printf(" ==> 50%s X %d°³, 20%s x %d°³, 10%s X %d°³, 5%s X %d°³\n"
+			printf(" ==> 50%s X %dê°œ, 20%s x %dê°œ, 10%s X %dê°œ, 5%s X %dê°œ\n"
 					, currencyName, returnForeignCurrency50
 					, currencyName, returnForeignCurrency20
 					, currencyName, returnForeignCurrency10
 					, currencyName, returnForeignCurrency5);
 		}
 		
-		// Ãâ·Â - ¿øÈ­ °Å½º¸§µ· & ¿øÈ­ °Å½º¸§µ· µ¹·ÁÁÖ´Â ¹æ¹ı (È­Æó ´ÜÀ§º° ¼ö·®) 
-		printf("°Å½º¸§µ· : %d ¿ø\n", returnKRWFinal);
-		printf(" ==> 1000 ¿ø X %d°³, 500¿ø X %d°³, 100¿ø X %d°³, 50¿ø X %d°³, 10¿ø X %d°³\n"
+		// ì¶œë ¥ - ì›í™” ê±°ìŠ¤ë¦„ëˆ & ì›í™” ê±°ìŠ¤ë¦„ëˆ ëŒë ¤ì£¼ëŠ” ë°©ë²• (í™”í ë‹¨ìœ„ë³„ ìˆ˜ëŸ‰) 
+		printf("ê±°ìŠ¤ë¦„ëˆ : %d ì›\n", returnKRWFinal);
+		printf(" ==> 1000 ì› X %dê°œ, 500ì› X %dê°œ, 100ì› X %dê°œ, 50ì› X %dê°œ, 10ì› X %dê°œ\n"
 						, returnKRW1000, returnKRW500, returnKRW100, returnKRW50, returnKRW10);
 		printf("============================================================\n");
 		}
