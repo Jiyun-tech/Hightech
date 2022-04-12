@@ -1,4 +1,4 @@
-//실습 과제 : 한국 나이, 만 나이 계산
+//실습 과제 : 한국 나이, 만 나이 계산 (2022.04.12)
 
 #include <stdio.h>
 #include <time.h>
@@ -10,12 +10,12 @@ int main() {
 	struct tm today = *localtime(&t);
 	
 	// 변수 선언 
-	int inputBirthday = 0;				//입력 생년월일 (주민등록번호 앞자리) 
-	int birthdayYear = 0;				//입력 생년 
-	int birthdayMonth = 0;				//입력 생월 
-	int birthdayDay = 0;				//입력 생일 
-	int koreanAge = 0;				//한국 나이 
-	int internationalAge = 0;			//만 나이 
+	int inputBirthday = 0;				// 입력 생년월일 (주민등록번호 앞자리) 
+	int birthdayYear = 0;				// 입력 생년 
+	int birthdayMonth = 0;				// 입력 생월 
+	int birthdayDay = 0;				// 입력 생일 
+	int koreanAge = 0;				// 한국 나이 
+	int internationalAge = 0;			// 만 나이 
 	int yearToday = today.tm_year + 1900;		// 오늘 날짜의 연도 
 	int monthToday = today.tm_mon + 1;		// 오늘 날짜의 월 
 	int dayToday = today.tm_yday + 1;		// 오늘 날짜의 일 (올해의 몇 번째 날인지) 
