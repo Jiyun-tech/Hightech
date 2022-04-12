@@ -24,7 +24,7 @@ int main () {
 	int returnForeignCurrency10000 = 0, returnForeignCurrency5000 = 0, returnForeignCurrency1000 = 0,
 		returnForeignCurrency500 = 0, returnForeignCurrency200 = 0, returnForeignCurrency100 = 0,
 		returnForeignCurrency50 = 0, returnForeignCurrency20 = 0, returnForeignCurrency10 = 0, 
-		returnForeignCurrency5 = 0; 	// 외화 거스름돈 출력 단위 
+		returnForeignCurrency5 = 0; 					// 외화 거스름돈 출력 단위 
 	char currencyNameInput[][10] = {"달러","엔","유로","위안","파운드"};	//각 외화의 이름 해당 배열로 선언 
 	char *currencyName;							//선택한 외화에 따른 화폐 이름 할당할 변수. 
 
@@ -41,12 +41,12 @@ int main () {
 		// 환전 계산 시작 
 		FXRATE = FXRATE_Input[inputNumber-1];
 		outputForeignCurrency = inputKRW/FXRATE;
-		if (inputNumber == 1 || inputNumber == 3 || inputNumber == 5) { // USD, EUR, GBP 
-			outputForeignCurrencyFinal = ((int)outputForeignCurrency)/5*5; // 5 아래로 절삭
-		} else if (inputNumber == 2) { 									// JPY
-			outputForeignCurrencyFinal = ((int)outputForeignCurrency)/100*100; // 100 아래로 절삭
-		} else if (inputNumber == 4) { 									// CNY
-			outputForeignCurrencyFinal = ((int)outputForeignCurrency)/10*10; // 10 아래로 절삭
+		if (inputNumber == 1 || inputNumber == 3 || inputNumber == 5) { 		// USD, EUR, GBP 
+			outputForeignCurrencyFinal = ((int)outputForeignCurrency)/5*5; 		// 5 아래로 절삭
+		} else if (inputNumber == 2) { 							// JPY
+			outputForeignCurrencyFinal = ((int)outputForeignCurrency)/100*100; 	// 100 아래로 절삭
+		} else if (inputNumber == 4) { 							// CNY
+			outputForeignCurrencyFinal = ((int)outputForeignCurrency)/10*10; 	// 10 아래로 절삭
 		}
 		currencyName = currencyNameInput[inputNumber-1];
 		
