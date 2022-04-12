@@ -15,7 +15,7 @@ int main () {
 	int returnKRW50 = 0;
 	int returnKRW10 = 0;
 	
-	printf("È¯ÀüÀ» ¿øÇÏ´Â ±İ¾×À» ÀÔ·ÂÇÏ¼¼¿ä(¿øÈ­) : ");
+	printf("í™˜ì „ì„ ì›í•˜ëŠ” ê¸ˆì•¡ì„ ì…ë ¥í•˜ì„¸ìš”(ì›í™”) : ");
 	scanf("%d", &inputKRW);
 	printf("====================\n");
 	
@@ -31,12 +31,12 @@ int main () {
 	returnKRW100 = returnKRWFinal/100;
 	returnKRWFinal = returnKRWFinal - returnKRW100 * 100;
 	returnKRW50 = returnKRWFinal/50;
-	returnKRWFinal = returnKRWFinal - returnKRW500 * 50;
+	returnKRWFinal = returnKRWFinal - returnKRW50 * 50;
 	returnKRW10 = returnKRWFinal/10;
-	printf("USD ±âÁØ È¯À² : %10.2f\n", FXRATE_USD);
-	printf("È¯Àü °á°ú\n");
-	printf("´Ş·¯ : %d ´Ş·¯\n", outputUSDFinal);
-	printf("°Å½º¸§µ· : %d¿ø (1000 ¿øX %d°³, 500¿øX %d°³, 100¿ø X %d°³, 50¿ø X %d°³, 10¿ø X %d°³)\n"
+	printf("USD ê¸°ì¤€ í™˜ìœ¨ : %10.2f\n", FXRATE_USD);
+	printf("í™˜ì „ ê²°ê³¼\n");
+	printf("ë‹¬ëŸ¬ : %d ë‹¬ëŸ¬\n", outputUSDFinal);
+	printf("ê±°ìŠ¤ë¦„ëˆ : %dì› (1000 ì›X %dê°œ, 500ì›X %dê°œ, 100ì› X %dê°œ, 50ì› X %dê°œ, 10ì› X %dê°œ)\n"
 			,returnKRWFinal, returnKRW1000, returnKRW500, returnKRW100, returnKRW50, returnKRW10);
 	printf("====================\n");
 
@@ -52,12 +52,12 @@ int main () {
 	returnKRW100 = returnKRWFinal/100;
 	returnKRWFinal = returnKRWFinal - returnKRW100 * 100;
 	returnKRW50 = returnKRWFinal/50;
-	returnKRWFinal = returnKRWFinal - returnKRW500 * 50;
+	returnKRWFinal = returnKRWFinal - returnKRW50 * 50;
 	returnKRW10 = returnKRWFinal/10;
-	printf("JPY ±âÁØ È¯À² : %10.2f\n", FXRATE_JPY);
-	printf("È¯Àü °á°ú\n");
-	printf("¿£ :  %d ¿£\n", outputJPYFinal);
-	printf("°Å½º¸§µ· : %d¿ø (1000 ¿øX %d°³, 500¿øX %d°³, 100¿ø X %d°³, 50¿ø X %d°³, 10¿ø X %d°³)\n"
+	printf("JPY ê¸°ì¤€ í™˜ìœ¨ : %10.2f\n", FXRATE_JPY);
+	printf("í™˜ì „ ê²°ê³¼\n");
+	printf("ì—” :  %d ì—”\n", outputJPYFinal);
+	printf("ê±°ìŠ¤ë¦„ëˆ : %dì› (1000 ì›X %dê°œ, 500ì›X %dê°œ, 100ì› X %dê°œ, 50ì› X %dê°œ, 10ì› X %dê°œ)\n"
 			,returnKRWFinal, returnKRW1000, returnKRW500, returnKRW100, returnKRW50, returnKRW10);
 	printf("====================\n");
 
@@ -73,12 +73,12 @@ int main () {
 	returnKRW100 = returnKRWFinal/100;
 	returnKRWFinal = returnKRWFinal - returnKRW100 * 100;
 	returnKRW50 = returnKRWFinal/50;
-	returnKRWFinal = returnKRWFinal - returnKRW500 * 50;
+	returnKRWFinal = returnKRWFinal - returnKRW50 * 50;
 	returnKRW10 = returnKRWFinal/10;
-	printf("EUR ±âÁØ È¯À² : %10.2f\n", FXRATE_EUR);
-	printf("È¯Àü °á\n");
-	printf("À¯·Î : %d À¯·Î\n", outputEURFinal);
-	printf("°Å½º¸§µ· : %d¿ø (1000 ¿øX %d°³, 500¿øX %d°³, 100¿ø X %d°³, 50¿ø X %d°³, 10¿ø X %d°³)\n"
+	printf("EUR ê¸°ì¤€ í™˜ìœ¨ : %10.2f\n", FXRATE_EUR);
+	printf("í™˜ì „ ê²°\n");
+	printf("ìœ ë¡œ : %d ìœ ë¡œ\n", outputEURFinal);
+	printf("ê±°ìŠ¤ë¦„ëˆ : %dì› (1000 ì›X %dê°œ, 500ì›X %dê°œ, 100ì› X %dê°œ, 50ì› X %dê°œ, 10ì› X %dê°œ)\n"
 			,returnKRWFinal, returnKRW1000, returnKRW500, returnKRW100, returnKRW50, returnKRW10);
 	printf("====================\n");	 
 
@@ -94,12 +94,12 @@ int main () {
 	returnKRW100 = returnKRWFinal/100;
 	returnKRWFinal = returnKRWFinal - returnKRW100 * 100;
 	returnKRW50 = returnKRWFinal/50;
-	returnKRWFinal = returnKRWFinal - returnKRW500 * 50;
+	returnKRWFinal = returnKRWFinal - returnKRW50 * 50;
 	returnKRW10 = returnKRWFinal/10;
-	printf("CNY ±âÁØ È¯À² : %10.2f\n", FXRATE_CNY);
-	printf("È¯Àü °á°ú\n");
-	printf("À§¾È : %d À§¾È\n", outputCNYFinal);
-	printf("°Å½º¸§µ· : %d¿ø (1000 ¿øX %d°³, 500¿øX %d°³, 100¿ø X %d°³, 50¿ø X %d°³, 10¿ø X %d°³)\n"
+	printf("CNY ê¸°ì¤€ í™˜ìœ¨ : %10.2f\n", FXRATE_CNY);
+	printf("í™˜ì „ ê²°ê³¼\n");
+	printf("ìœ„ì•ˆ : %d ìœ„ì•ˆ\n", outputCNYFinal);
+	printf("ê±°ìŠ¤ë¦„ëˆ : %dì› (1000 ì›X %dê°œ, 500ì›X %dê°œ, 100ì› X %dê°œ, 50ì› X %dê°œ, 10ì› X %dê°œ)\n"
 			,returnKRWFinal, returnKRW1000, returnKRW500, returnKRW100, returnKRW50, returnKRW10);
 	printf("====================\n");
 
@@ -115,11 +115,11 @@ int main () {
 	returnKRW100 = returnKRWFinal/100;
 	returnKRWFinal = returnKRWFinal - returnKRW100 * 100;
 	returnKRW50 = returnKRWFinal/50;
-	returnKRWFinal = returnKRWFinal - returnKRW500 * 50;
+	returnKRWFinal = returnKRWFinal - returnKRW50 * 50;
 	returnKRW10 = returnKRWFinal/10;
-	printf("GBP ±âÁØ È¯À² : %10.2f\n", FXRATE_GBP);
-	printf("È¯Àü °á°ú\n");
-	printf("ÆÄ¿îµå : %d ÆÄ¿îµå\n", outputGBPFinal);
-	printf("°Å½º¸§µ· : %d¿ø (1000 ¿øX %d°³, 500¿øX %d°³, 100¿ø X %d°³, 50¿ø X %d°³, 10¿ø X %d°³)\n"
+	printf("GBP ê¸°ì¤€ í™˜ìœ¨ : %10.2f\n", FXRATE_GBP);
+	printf("í™˜ì „ ê²°ê³¼\n");
+	printf("íŒŒìš´ë“œ : %d íŒŒìš´ë“œ\n", outputGBPFinal);
+	printf("ê±°ìŠ¤ë¦„ëˆ : %dì› (1000 ì›X %dê°œ, 500ì›X %dê°œ, 100ì› X %dê°œ, 50ì› X %dê°œ, 10ì› X %dê°œ)\n"
 			,returnKRWFinal, returnKRW1000, returnKRW500, returnKRW100, returnKRW50, returnKRW10);
 }
