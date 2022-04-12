@@ -68,15 +68,11 @@ int main () {
 		
 		// 외화별 환전 금액을 각 화폐 단위에 맞추어 주는 방법 계산 (화폐 단위별 수량) 
 		if (inputNumber == 1) {
-			returnForeignCurrency1000 = outputForeignCurrencyFinal/1000;
-			returnForeignCurrency500 = outputForeignCurrencyFinal%1000/500;
-			returnForeignCurrency100 = outputForeignCurrencyFinal%1000%500/100;
-			returnForeignCurrency50 = outputForeignCurrencyFinal%1000%500%100/50;
-			returnForeignCurrency10 = outputForeignCurrencyFinal%1000%500%100%50/10;
-			returnForeignCurrency5 = outputForeignCurrencyFinal%1000%500%100%50%10/5;
-			printf(" ==> 1000%s X %d개, 500%s X %d개, 100%s X %d개, 50%s X %d개, 10%s X %d개\n, 5%s X %d개\n"
-					, currencyName, returnForeignCurrency1000 
-					, currencyName, returnForeignCurrency500 
+			returnForeignCurrency100 = outputForeignCurrencyFinal/100;
+			returnForeignCurrency50 = outputForeignCurrencyFinal%100/50;
+			returnForeignCurrency10 = outputForeignCurrencyFinal%100%50/10;
+			returnForeignCurrency5 = outputForeignCurrencyFinal%100%50%10/5;
+			printf(" ==> 100%s X %d개, 50%s X %d개, 10%s X %d개\n, 5%s X %d개\n"
 					, currencyName, returnForeignCurrency100
 					, currencyName, returnForeignCurrency50
 					, currencyName, returnForeignCurrency10
