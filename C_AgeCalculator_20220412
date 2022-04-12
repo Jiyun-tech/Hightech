@@ -1,0 +1,75 @@
+//실습 과제 : 한국 나이, 만 나이 계산
+
+#include <stdio.h>
+#include <time.h>
+
+int main() {
+	
+	// 오늘 날짜 불러오기 
+	time_t t = time(NULL);
+	struct tm today = *localtime(&t);
+	
+	// 변수 선언 
+	int inputBirthday = 0;					//입력 생년월일 (주민등록번호 앞자리) 
+	int birthdayYear = 0;					//입력 생년 
+	int birthdayMonth = 0;					//입력 생월 
+	int birthdayDay = 0;					//입력 생일 
+	int koreanAge = 0;						//한국 나이 
+	int internationalAge = 0;				//만 나이 
+	int yearToday = today.tm_year + 1900;	// 오늘 날짜의 연도 
+	int monthToday = today.tm_mon + 1;		// 오늘 날짜의 월 
+	int dayToday = today.tm_yday + 1;		// 오늘 날짜의 일 (올해의 몇 번째 날인지) 
+	int dayTodayArray [12];					// 올해 각 월별 일수 넣을 배열 
+	int normalYear[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};	// 평년 
+	int leapYear[] = {31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};		// 윤년 
+	
+	// 생년월일 입력 
+	do {
+		printf("주민등록번호 앞자리를 입력하시오(6자리 숫자) : ");
+		scanf("%d", &inputBirthday);
+	} while (inputBirthday > 999999 || inputBirthday%10000/100 > 12 || inputBirthday%10000%100 > 31);
+	
+	// 윤년,평년 여부에 따른 월별 마지막 날 확인하여 dayTodayArray에 넣어주기 
+	if ( (yearToday%4 == 0 && yearToday%100 != 0) || yearToday%400==0) {
+		for (int i = 0; i < 12; i++) {
+			dayTodayArray[i] = leapYear[i];
+		}
+	} else {
+		for (int i = 0; i < 12; i++) {
+			dayTodayArray[i] = normalYear[i];
+		}
+	}
+	
+	// 오늘이 이번 달 몇 번째 날인지 확인하기 
+	for (int i = 0; i < monthToday-1; i++) {
+		dayToday = dayToday - dayTodayArray[i];	
+	}
+	
+	// 생일 연, 월, 일 분리. 
+	// 생년은 2000년대 생인지 1900년대 생인지 분류.
+	birthdayYear = inputBirthday/10000;
+	if (birthdayYear < 23) {
+		birthdayYear = birthdayYear+2000;
+	} else {
+		birthdayYear = birthdayYear+1900;
+	}
+	birthdayMonth = inputBirthday%10000/100;
+	birthdayDay = inputBirthday%100;
+	
+	// 한국 나이 계산 
+	koreanAge = yearToday - birthdayYear + 1;
+	// 만 나이 계산 
+	if (birthdayMonth < monthToday) {
+		internationalAge = yearToday - birthdayYear;
+	} else if (birthdayMonth == monthToday && birthdayDay <= dayToday) {
+		internationalAge = yearToday - birthdayYear;
+	} else {
+		internationalAge = yearToday - birthdayYear - 1;
+	}
+	
+	// 최종 값 출력 
+	printf("오늘(%d년 %d월 %d일) 기준 나이는 %d세, 만 나이는 %d세 입니다."
+		,yearToday, monthToday, dayToday, koreanAge, internationalAge);
+	
+	return 0;
+}
