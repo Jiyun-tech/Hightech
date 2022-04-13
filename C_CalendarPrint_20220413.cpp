@@ -84,11 +84,7 @@ int main() {
 	// 해당 월 시작 요일에 따라 공란 (\t) 출력.
 	// (firstDayOfinputMonth % 7) => 0일 1월 2화 3수 4목 5금 6토 
 	for (int indexD = 0; indexD < (firstDayOfinputMonth % 7); indexD++) {
-		if (indexD == 6) {
-			break;
-		} else {
-			printf("\t");
-		}
+		printf("\t");
 	}
 		
 	// 날짜 인쇄 => 토요일 날짜 인쇄 후 개행 & 그 외 요일 날짜 인쇄 후 tab 
