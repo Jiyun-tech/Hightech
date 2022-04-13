@@ -1,45 +1,45 @@
-// KOPO18 ¼­ÁöÀ± (2022.04.13)
-// ¿¬&¿ù ÀÔ·Â¹Ş¾Æ ´Ş·Â Ãâ·ÂÇÏ±â
-// Âü°í: 1900³â 1¿ù 1ÀÏ = ¿ù¿äÀÏ 
+// 2022.04.13
+// ì—°&ì›” ì…ë ¥ë°›ì•„ ë‹¬ë ¥ ì¶œë ¥í•˜ê¸°
+// ì°¸ê³ : 1900ë…„ 1ì›” 1ì¼ = ì›”ìš”ì¼ 
 
 #include <stdio.h>
 
 int main() {
 	
-	int inputYear;				// ÀÔ·Â ¹ŞÀº ¿¬µµ °ª. 
-	int inputMonth;				// ÀÔ·Â ¹ŞÀº ¿ù °ª. 
+	int inputYear;			// ì…ë ¥ ë°›ì€ ì—°ë„ ê°’. 
+	int inputMonth;			// ì…ë ¥ ë°›ì€ ì›” ê°’. 
 	
-	int leapYearNumber; 		// 1900³â~(inputYear-1)±îÁö À±³â °³¼ö 
-	int daysFrom1900; 			// 1900³â~(inputYear-1)±îÁö ÃÑ ³¯Â¥ °³¼ö (1900.01.01 = 1) 
-	int daysFromThisYear;		// inputYearÀÇ Ã¹ ³¯ ~  (inputMonth-1)±îÁö ÃÑ ÀÏ¼ö. 
-	int firstDayOfinputMonth; 	// 1900³â~(inputYear inputMonth.01) ±îÁö ÃÑ ÀÏ¼ö. => inputYear-MonthÀÇ Ã¹¹øÂ° ³¯ÀÌ ¹«½¼ ¿äÀÏÀÎÁö °è»ê ½Ã »ç¿ë. 
-	int daysOfinputMonth;		// ÀÔ·Â ¹ŞÀº ¿ùÀÇ ³¯Â¥ °³¼ö. 
+	int leapYearNumber; 		// 1900ë…„~(inputYear-1)ê¹Œì§€ ìœ¤ë…„ ê°œìˆ˜ 
+	int daysFrom1900; 		// 1900ë…„~(inputYear-1)ê¹Œì§€ ì´ ë‚ ì§œ ê°œìˆ˜ (1900.01.01 = 1) 
+	int daysFromThisYear;		// inputYearì˜ ì²« ë‚  ~  (inputMonth-1)ê¹Œì§€ ì´ ì¼ìˆ˜. 
+	int firstDayOfinputMonth; 	// 1900ë…„~(inputYear inputMonth.01) ê¹Œì§€ ì´ ì¼ìˆ˜. => inputYear-Monthì˜ ì²«ë²ˆì§¸ ë‚ ì´ ë¬´ìŠ¨ ìš”ì¼ì¸ì§€ ê³„ì‚° ì‹œ ì‚¬ìš©. 
+	int daysOfinputMonth;		// ì…ë ¥ ë°›ì€ ì›”ì˜ ë‚ ì§œ ê°œìˆ˜. 
 	
-	int inputYearDays[12];		// inputYearÀÇ ¿ùº° ÀÏ¼ö ÀÔ·ÂÇÒ ¹è¿­. 
-	int normalYearDays[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31}; 	// Æò³â 
-	int leapYearDays[] = {31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};		// À±³â 
+	int inputYearDays[12];		// inputYearì˜ ì›”ë³„ ì¼ìˆ˜ ì…ë ¥í•  ë°°ì—´. 
+	int normalYearDays[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31}; 	// í‰ë…„ 
+	int leapYearDays[] = {31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};		// ìœ¤ë…„ 
 	
-	printf("¿¬µµ ÀÔ·Â : ");
+	printf("ì—°ë„ ì…ë ¥ : ");
 	scanf("%d", &inputYear);
-	printf("¿ù ÀÔ·Â : ");
+	printf("ì›” ì…ë ¥ : ");
 	scanf("%d", &inputMonth);
 	
 	// ************************************************************
-	// <inputYear, inputMonthÀÇ Ã¹ ¹øÂ° ¿äÀÏ °è»êÇÏ±â ½ÃÀÛ!>
+	// <inputYear, inputMonthì˜ ì²« ë²ˆì§¸ ìš”ì¼ ê³„ì‚°í•˜ê¸° ì‹œì‘!>
 	
-	// 1900³â~ (inputYear-1) ±îÁö ÃÑ ³¯Â¥ °³¼ö (Âü°í : 1900.01.01 => 1, 1900.01.02 => 2) 
-	// *Âü°í) 1900³âÀº 4ÀÇ ¹è¼öÀÌÁö¸¸, 100ÀÇ ¹è¼öÀÌ±âµµ ÇÏ¹Ç·Î & 400ÀÇ ¹è¼ö°¡ ¾Æ´Ï¹Ç·Î À±³âÀÌ ¾Æ´Ô. 
-	// 1. 1900³â ~  (inputYear-1) ±îÁö ÃÑ À±³â °³¼ö ±¸ÇÏ±â 
+	// 1900ë…„~ (inputYear-1) ê¹Œì§€ ì´ ë‚ ì§œ ê°œìˆ˜ (ì°¸ê³  : 1900.01.01 => 1, 1900.01.02 => 2) 
+	// *ì°¸ê³ ) 1900ë…„ì€ 4ì˜ ë°°ìˆ˜ì´ì§€ë§Œ, 100ì˜ ë°°ìˆ˜ì´ê¸°ë„ í•˜ë¯€ë¡œ & 400ì˜ ë°°ìˆ˜ê°€ ì•„ë‹ˆë¯€ë¡œ ìœ¤ë…„ì´ ì•„ë‹˜. 
+	// 1. 1900ë…„ ~  (inputYear-1) ê¹Œì§€ ì´ ìœ¤ë…„ ê°œìˆ˜ êµ¬í•˜ê¸° 
 	if (inputYear > 2000) {
 		leapYearNumber = ((inputYear - 1900 - 1)/4 + 1) - ((inputYear - 1900 - 1)/100+1) + ((inputYear - 2000 - 1)/400+1);
 	} else {
 		leapYearNumber = ((inputYear - 1900 - 1)/4 + 1) - ((inputYear - 1900 - 1)/100+1);
 	}
-	// 2. 1900³â ~  (inputYear-1) ±îÁö ÃÑ ³¯Â¥ ¼ö ±¸ÇÏ±â (À±³â °í·ÁÇÏ¿© À±³â ¼ö¸¸Å­ ³¯Â¥ ´õÇØÁÖ±â) 
+	// 2. 1900ë…„ ~  (inputYear-1) ê¹Œì§€ ì´ ë‚ ì§œ ìˆ˜ êµ¬í•˜ê¸° (ìœ¤ë…„ ê³ ë ¤í•˜ì—¬ ìœ¤ë…„ ìˆ˜ë§Œí¼ ë‚ ì§œ ë”í•´ì£¼ê¸°) 
 	daysFrom1900 = 365*(inputYear - 1899 - 1) + (leapYearNumber * 1);
 	
-	// 3. inputYear 1¿ù 1ÀÏ ~ (inputMonth-1)±îÁö ³¯Â¥ °³¼ö ±¸ÇÏ±â 
-	// 3-1. inputYear À±³â or Æò³â ¿©ºÎ È®ÀÎÇÏ¿© inputYearÀÇ ¿ùº° ³¯Â¥ ¼ö ³Ö±â 
+	// 3. inputYear 1ì›” 1ì¼ ~ (inputMonth-1)ê¹Œì§€ ë‚ ì§œ ê°œìˆ˜ êµ¬í•˜ê¸° 
+	// 3-1. inputYear ìœ¤ë…„ or í‰ë…„ ì—¬ë¶€ í™•ì¸í•˜ì—¬ inputYearì˜ ì›”ë³„ ë‚ ì§œ ìˆ˜ ë„£ê¸° 
 	if ( (inputYear%4 == 0 && inputYear%100 != 0) || inputYear%400 == 0) {
 		for (int indexA = 1; indexA <= 12; indexA++) {
 			inputYearDays[indexA-1] = leapYearDays[indexA-1];
@@ -49,40 +49,40 @@ int main() {
 			inputYearDays[indexB-1] = normalYearDays[indexB-1];
 		}
 	}
-	// 3-2.  inputYearÀÇ 1¿ùºÎÅÍ ~ inputMonth Àü ¿ù±îÁö ³¯Â¥ ´õÇÏ±â.
-	if (inputMonth > 1) { 	// 1¿ùÀÌ ¾Æ´Ñ °æ¿ì -> 1¿ù ~ (inputMonth-1)±îÁö ¿ùº° ³¯Â¥ ´õÇÔ. 
+	// 3-2.  inputYearì˜ 1ì›”ë¶€í„° ~ inputMonth ì „ ì›”ê¹Œì§€ ë‚ ì§œ ë”í•˜ê¸°.
+	if (inputMonth > 1) { 		// 1ì›”ì´ ì•„ë‹Œ ê²½ìš° -> 1ì›” ~ (inputMonth-1)ê¹Œì§€ ì›”ë³„ ë‚ ì§œ ë”í•¨. 
 		daysFromThisYear = 0;
 		for (int indexC = 1; indexC <= inputMonth-1; indexC++) {
 			daysFromThisYear = daysFromThisYear + inputYearDays[indexC-1];
 		}
-	} else { 				// 1¿ùÀÎ °æ¿ì -> 0 
-			daysFromThisYear = 0;
+	} else { 			// 1ì›”ì¸ ê²½ìš° -> 0 
+		daysFromThisYear = 0;
 	}
 	
-	// 4. 1900³âºÎÅÍ inputYearÀÇ inputMonth Ã¹ ¹øÂ° ³¯±îÁö ÃÑ ³¯Â¥ ¼ö (=> firstDayOfinputMonth)
+	// 4. 1900ë…„ë¶€í„° inputYearì˜ inputMonth ì²« ë²ˆì§¸ ë‚ ê¹Œì§€ ì´ ë‚ ì§œ ìˆ˜ (=> firstDayOfinputMonth)
 	// (1900.01.01 = 1, 1900.01.2 = 2, ...) 
 	firstDayOfinputMonth = daysFrom1900 + daysFromThisYear + 1; 
-	// *Âü°í) 1900.01.01 = 1 (¿ù), 1900.01.2 = 2 (È­), ...
-	// ==> if (firstDayOfinputMonth % 7 == 1) ==> firstDayOfinputMonth°¡ ¿ù¿äÀÏ!
-	// ==> 0 ÀÏ 1 ¿ù 2 È­ 3 ¼ö 4 ¸ñ 5±İ 6 Åä 
+	// *ì°¸ê³ ) 1900.01.01 = 1 (ì›”), 1900.01.2 = 2 (í™”), ...
+	// ==> if (firstDayOfinputMonth % 7 == 1) ==> firstDayOfinputMonthê°€ ì›”ìš”ì¼!
+	// ==> 0 ì¼ 1 ì›” 2 í™” 3 ìˆ˜ 4 ëª© 5ê¸ˆ 6 í†  
 	
-	// <inputYear, inputMonthÀÇ Ã¹ ¹øÂ° ¿äÀÏ °è»êÇÏ±â ³¡!>
+	// <inputYear, inputMonthì˜ ì²« ë²ˆì§¸ ìš”ì¼ ê³„ì‚°í•˜ê¸° ë!>
 	// ************************************************************
 	
 	
-	// inputYearÀÇ inputMonth°¡ ¸çÄ¥±îÁö ÀÖ´ÂÁö È®ÀÎ ==> daysOfinputMonth
-	// À±³âÀÎ °æ¿ì & Æò³âÀÎ °æ¿ì ³ª´©¾î¼­ È®ÀÎ 
+	// inputYearì˜ inputMonthê°€ ë©°ì¹ ê¹Œì§€ ìˆëŠ”ì§€ í™•ì¸ ==> daysOfinputMonth
+	// ìœ¤ë…„ì¸ ê²½ìš° & í‰ë…„ì¸ ê²½ìš° ë‚˜ëˆ„ì–´ì„œ í™•ì¸ 
 	if ( (inputYear%4 == 0 && inputYear%100 != 0) || inputYear%400 == 0) {
 		daysOfinputMonth = leapYearDays[inputMonth-1];
 	} else {
 		daysOfinputMonth = normalYearDays[inputMonth-1];
 	}
 	
-	// **********´Ş·Â ÇÁ¸°Æ® ½ÃÀÛ**********
-	printf("\n======= %d³â %d¿ù =======\n", inputYear, inputMonth);
-	printf("ÀÏ\t¿ù\tÈ­\t¼ö\t¸ñ\t±İ\tÅä\n");
-	// ÇØ´ç ¿ù ½ÃÀÛ ¿äÀÏ¿¡ µû¶ó °ø¶õ (\t) Ãâ·Â.
-	// (firstDayOfinputMonth % 7) => 0 ÀÏ 1 ¿ù 2 È­ 3 ¼ö 4 ¸ñ 5±İ 6 Åä 
+	// **********ë‹¬ë ¥ í”„ë¦°íŠ¸ ì‹œì‘**********
+	printf("\n======= %dë…„ %dì›” =======\n", inputYear, inputMonth);
+	printf("ì¼\tì›”\tí™”\tìˆ˜\tëª©\tê¸ˆ\tí† \n");
+	// í•´ë‹¹ ì›” ì‹œì‘ ìš”ì¼ì— ë”°ë¼ ê³µë€ (\t) ì¶œë ¥.
+	// (firstDayOfinputMonth % 7) => 0 ì¼ 1 ì›” 2 í™” 3 ìˆ˜ 4 ëª© 5ê¸ˆ 6 í†  
 	for (int indexD = 0; indexD < (firstDayOfinputMonth % 7); indexD++) {
 		if (indexD == 6) {
 			break;
@@ -91,16 +91,16 @@ int main() {
 		}
 	}
 		
-	// ³¯Â¥ ÀÎ¼â => Åä¿äÀÏ ³¯Â¥ ÀÎ¼â ÈÄ °³Çà & ±× ¿Ü ¿äÀÏ ³¯Â¥ ÀÎ¼â ÈÄ tab 
-	// (indexE % 7) => 0 ÀÏ 1 ¿ù 2 È­ 3 ¼ö 4 ¸ñ 5±İ 6 Åä 
+	// ë‚ ì§œ ì¸ì‡„ => í† ìš”ì¼ ë‚ ì§œ ì¸ì‡„ í›„ ê°œí–‰ & ê·¸ ì™¸ ìš”ì¼ ë‚ ì§œ ì¸ì‡„ í›„ tab 
+	// (indexE % 7) => 0 ì¼ 1 ì›” 2 í™” 3 ìˆ˜ 4 ëª© 5ê¸ˆ 6 í†  
 	for (int indexE = firstDayOfinputMonth; indexE < firstDayOfinputMonth+daysOfinputMonth; indexE++) {
-		if (indexE%7 == 6) { 	// Åä¿äÀÏ
+		if (indexE%7 == 6) { 	// í† ìš”ì¼
 			printf("%d\n", indexE-firstDayOfinputMonth+1);
-		} else {				// Åä¿äÀÏ ¿Ü ¿äÀÏ
+		} else {		// í† ìš”ì¼ ì™¸ ìš”ì¼
 			printf("%d\t", indexE-firstDayOfinputMonth+1);
 		}
 	}
-	// **********´Ş·Â ÇÁ¸°Æ® Á¾·á********** 
+	// **********ë‹¬ë ¥ í”„ë¦°íŠ¸ ì¢…ë£Œ********** 
 	
 	return 0;
 } 
