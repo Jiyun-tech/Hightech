@@ -69,7 +69,6 @@ int main() {
 	// <inputYear, inputMonth의 첫 번째 요일 계산하기 끝!>
 	// ************************************************************
 	
-	
 	// inputYear의 inputMonth가 며칠까지 있는지 확인 ==> daysOfinputMonth
 	// 윤년인 경우 & 평년인 경우 나누어서 확인 
 	if ( (inputYear%4 == 0 && inputYear%100 != 0) || inputYear%400 == 0) {
@@ -86,7 +85,6 @@ int main() {
 	for (int indexD = 0; indexD < (firstDayOfinputMonth % 7); indexD++) {
 		printf("\t");
 	}
-		
 	// 날짜 인쇄 => 토요일 날짜 인쇄 후 개행 & 그 외 요일 날짜 인쇄 후 tab 
 	// (indexE % 7) => 0일 1월 2화 3수 4목 5금 6토 
 	for (int indexE = firstDayOfinputMonth; indexE < firstDayOfinputMonth+daysOfinputMonth; indexE++) {
