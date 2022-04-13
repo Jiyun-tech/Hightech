@@ -49,8 +49,8 @@ int main() {
 			inputYearDays[indexB-1] = normalYearDays[indexB-1];
 		}
 	}
-	// 3-2.  inputYear의 1월부터 ~ inputMonth 전 월까지 날짜 더하기.
-	if (inputMonth > 1) { 		// 1월이 아닌 경우 -> 1월 ~ (inputMonth-1)까지 월별 날짜 더함. 
+	// 3-2.  inputYear의 1월부터 ~ inputMonth 전 월까지 일수 더하기.
+	if (inputMonth > 1) { 		// 1월이 아닌 경우 -> 1월 ~ (inputMonth-1)까지 월별 일수 더함. 
 		daysFromThisYear = 0;
 		for (int indexC = 1; indexC <= inputMonth-1; indexC++) {
 			daysFromThisYear = daysFromThisYear + inputYearDays[indexC-1];
