@@ -30,10 +30,11 @@ int main() {
 	// 1900년~ (inputYear-1) 까지 총 날짜 개수 (참고 : 1900.01.01 => 1, 1900.01.02 => 2) 
 	// *참고) 1900년은 4의 배수이지만, 100의 배수이기도 하므로 & 400의 배수가 아니므로 윤년이 아님. 
 	// 1. 1900년 ~  (inputYear-1) 까지 총 윤년 개수 구하기 
-	if (inputYear > 2000) {
-		leapYearNumber = ((inputYear - 1900 - 1)/4 + 1) - ((inputYear - 1900 - 1)/100+1) + ((inputYear - 2000 - 1)/400+1);
-	} else {
-		leapYearNumber = ((inputYear - 1900 - 1)/4 + 1) - ((inputYear - 1900 - 1)/100+1);
+	leapYearNumber = 0;
+	for (int index = 1900; index < inputYear; index++) {
+		if (index % 4 == 0 && index % 100 != 0) || index % 400 == 0) {
+			leapYearNumber++;
+		}
 	}
 	// 2. 1900년 ~  (inputYear-1) 까지 총 날짜 수 구하기 (윤년 고려하여 윤년 수만큼 날짜 더해주기) 
 	daysFrom1900 = 365*(inputYear - 1899 - 1) + (leapYearNumber * 1);
