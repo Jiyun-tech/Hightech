@@ -38,21 +38,21 @@ int main () {
 	int inputTicketSelect; 		// 권종 선택 
 	char inputSocialID[7]; 		// 사용자 주민등록번호 
 	int inputNumberOfTicket;	// 티켓 수량 
-	int inputBenefit; 			// 우대사항 
+	int inputBenefit; 		// 우대사항 
 	
 	// 계산 변수 선언 
 	int birthYearIndex; 		// 1900년대 & 2000년대생 구분
-	int userBirthYear;			// 사용자 생년 
-	int userBirthMonth;			// 사용자 생월 
-	int userBirthDay;			// 사용자 생일 
-	int userAge;				// **사용자 나이 
-	int ticketPrice;			// **권종 & 나이에 따른 티켓 가격 
+	int userBirthYear;		// 사용자 생년 
+	int userBirthMonth;		// 사용자 생월 
+	int userBirthDay;		// 사용자 생일 
+	int userAge;			// **사용자 나이 
+	int ticketPrice;		// **권종 & 나이에 따른 티켓 가격 
 	int totalTicketPrice;		// **티켓 가격 X 수량 
 	float appliedBenefit;		// 적용된 베네핏 금액 (종류에 따른 금액 상수 변수로 받아올 예정) 
 	int discountedTicketPrice;	// **우대사항 적용으로 인한 할인 금액
-	int discountedTicketNumber; // **우대사항 적용된 티켓 수량 
+	int discountedTicketNumber; 	// **우대사항 적용된 티켓 수량 
 	int finalTicketPrice;		// **totalTicketPrice - discountedTicketPrice
-	int continueTicketPurchase; // 티켓 발권 프로세스 반복 여부 선택 
+	int continueTicketPurchase; 	// 티켓 발권 프로세스 반복 여부 선택 
 	
 	// 누적 데이터 변수 선언
 	int accumulatedFinalPrice = 0; // 총 주문 금액 
@@ -69,7 +69,7 @@ int main () {
 		// 1~4 외 선택 시 선택창 재출력. 
 		
 		do {
-		printf("티켓 사용자의 주민등록번호 7자리를 입력하세요.(앞 6자리 & 뒤 1자리)\n\t => ");
+		printf("티켓 사용자의 주민등록번호 7자리를 입력하세요.(앞 6자리 & 뒷자리 첫 번째 숫자까지)\n\t => ");
 		scanf("%s", &inputSocialID);
 		} while ( ((inputSocialID[2]-48)*10 + (inputSocialID[3]-48)) > 12 || ((inputSocialID[4]-48)*10 + (inputSocialID[5]-48)) > 31 || inputSocialID[6]-48 > 4 );
 		
@@ -146,7 +146,7 @@ int main () {
 		totalTicketPrice = ticketPrice * inputNumberOfTicket;
 		
 		// Check the benefit and discounted amount.
-		if (userAge >= ELDER_AGE_MIN || userAge <= NEWBORN_AGE) {		// in case the user is older than 64. (above adult age range) => no other benebits can be applied.
+		if (userAge >= ELDER_AGE_MIN || userAge <= NEWBORN_AGE) {	// in case the user is older than 64. (above adult age range) => no other benebits can be applied.
 			appliedBenefit = BENEFIT_NON;
 			discountedTicketNumber = BENEFIT_NON_MAX;
 		} else {
@@ -155,7 +155,7 @@ int main () {
 					appliedBenefit = BENEFIT_NON;
 					discountedTicketNumber = BENEFIT_NON_MAX;
 				}
-				if (inputBenefit == 2) { // 장애인 
+				if (inputBenefit == 2) { 	// 장애인 
 					appliedBenefit = BENEFIT_DISABLED;
 					if (inputNumberOfTicket <= BENEFIT_DISABLED_MAX) {
 						discountedTicketNumber = inputNumberOfTicket;
@@ -163,7 +163,7 @@ int main () {
 						discountedTicketNumber = BENEFIT_DISABLED_MAX;
 					}
 				}
-				if (inputBenefit == 3) { // 국가유공자 
+				if (inputBenefit == 3) { 	// 국가유공자 
 					appliedBenefit = BENEFIT_NATIONAL_MERIT;
 					if (inputNumberOfTicket <= BENEFIT_NATIONAL_MERIT_MAX) {
 						discountedTicketNumber = inputNumberOfTicket;
@@ -171,7 +171,7 @@ int main () {
 						discountedTicketNumber = BENEFIT_NATIONAL_MERIT_MAX;
 					}
 				} 
-				if (inputBenefit == 4) { // 임산부 
+				if (inputBenefit == 4) { 	// 임산부 
 					appliedBenefit = BENEFIT_PREGNANT;
 					if (inputNumberOfTicket <= BENEFIT_PREGNANT_MAX) {
 						discountedTicketNumber = inputNumberOfTicket;
@@ -179,7 +179,7 @@ int main () {
 						discountedTicketNumber = BENEFIT_PREGNANT_MAX;
 					}
 				}
-				if (inputBenefit == 5) { // 휴가장병 
+				if (inputBenefit == 5) { 	// 휴가장병 
 					appliedBenefit = BENEFIT_ARMY;
 					if (inputNumberOfTicket <= BENEFIT_ARMY_MAX) {
 						discountedTicketNumber = inputNumberOfTicket;
@@ -187,7 +187,7 @@ int main () {
 						discountedTicketNumber =  BENEFIT_ARMY_MAX;
 					}
 				}
-				if (inputBenefit == 6) { //다자녀 
+				if (inputBenefit == 6) { 	//다자녀 
 					appliedBenefit = BENEFIT_MULTICHILD;
 					if (inputNumberOfTicket <= BENEFIT_MULTICHILD_MAX) {
 						discountedTicketNumber = inputNumberOfTicket;
@@ -200,7 +200,7 @@ int main () {
 					appliedBenefit = BENEFIT_NON;
 					discountedTicketNumber = BENEFIT_NON_MAX;
 				}
-				if (inputBenefit == 2) { // 장애인 & 국가유공자 우대 두 가지만 파크이용권에 적용 가능. 
+				if (inputBenefit == 2) { 	// 장애인 & 국가유공자 우대 두 가지만 파크이용권에 적용 가능. 
 					appliedBenefit = BENEFIT_DISABLED;
 					if (inputNumberOfTicket <= BENEFIT_DISABLED_MAX) {
 						discountedTicketNumber = inputNumberOfTicket;
@@ -208,7 +208,7 @@ int main () {
 						discountedTicketNumber = BENEFIT_DISABLED_MAX;
 					}
 				}
-				if (inputBenefit == 3) { // 장애인 & 국가유공자 우대 두 가지만 파크이용권에 적용 가능. 
+				if (inputBenefit == 3) { 	// 장애인 & 국가유공자 우대 두 가지만 파크이용권에 적용 가능. 
 					appliedBenefit = BENEFIT_NATIONAL_MERIT;
 					if (inputNumberOfTicket <= BENEFIT_NATIONAL_MERIT_MAX) {
 						discountedTicketNumber = inputNumberOfTicket;
