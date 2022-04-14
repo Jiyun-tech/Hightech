@@ -1,4 +1,4 @@
-// 2022.04.13
+// 2022.04.13 -> 2022.04.14 
 // 연&월 입력받아 달력 출력하기
 // 참고: 1900년 1월 1일 = 월요일 
 
@@ -97,11 +97,11 @@ int main() {
 		printf("%5c", ' ');
 	}
 	
-	// 날짜 인쇄 => 토요일 날짜 인쇄 후 개행 & 그 외 요일 날짜 인쇄 후 tab 
+	// 날짜 인쇄 => 토요일은 날짜 인쇄 후 개행
 	// (indexE % 7) => 0일 1월 2화 3수 4목 5금 6토 
 	for (int indexE = firstDayOfinputMonth; indexE < firstDayOfinputMonth+daysOfinputMonth; indexE++) {
 		printf("%5d", indexE-firstDayOfinputMonth+1);
-		if (indexE%7 == 6) { 	// 토요일 -> 날짜 인쇄 후 개행
+		if (indexE%7 == 6) { 	// 토요일
 			printf("\n");
 		}
 	}
