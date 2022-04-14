@@ -32,7 +32,7 @@ int main() {
 	// 1. 1900년 ~  (inputYear-1) 까지 총 윤년 개수 구하기 
 	leapYearNumber = 0;
 	for (int index = 1900; index < inputYear; index++) {
-		if (index % 4 == 0 && index % 100 != 0) || index % 400 == 0) {
+		if ((index % 4 == 0 && index % 100 != 0) || index % 400 == 0) {
 			leapYearNumber++;
 		}
 	}
