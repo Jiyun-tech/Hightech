@@ -90,19 +90,19 @@ int main() {
 	
 	// **********달력 프린트 시작**********
 	printf("\n======= %d년 %d월 =======\n", inputYear, inputMonth);
-	printf("일\t월\t화\t수\t목\t금\t토\n");
-	// 해당 월 시작 요일에 따라 공란 (\t) 출력.
+	printf("%5s%5s%5s%5s%5s%5s%5s\n","일","월","화","수","목","금","토");
+	// 해당 월 시작 요일에 따라 공란 (' ') 출력.
 	// (firstDayOfinputMonth % 7) => 0일 1월 2화 3수 4목 5금 6토 
 	for (int indexD = 0; indexD < (firstDayOfinputMonth % 7); indexD++) {
-		printf("\t");
+		printf("%5c", ' ');
 	}
+	
 	// 날짜 인쇄 => 토요일 날짜 인쇄 후 개행 & 그 외 요일 날짜 인쇄 후 tab 
 	// (indexE % 7) => 0일 1월 2화 3수 4목 5금 6토 
 	for (int indexE = firstDayOfinputMonth; indexE < firstDayOfinputMonth+daysOfinputMonth; indexE++) {
-		if (indexE%7 == 6) { 	// 토요일
-			printf("%d\n", indexE-firstDayOfinputMonth+1);
-		} else {		// 토요일 외 요일
-			printf("%d\t", indexE-firstDayOfinputMonth+1);
+		printf("%5d", indexE-firstDayOfinputMonth+1);
+		if (indexE%7 == 6) { 	// 토요일 -> 날짜 인쇄 후 개행
+			printf("\n");
 		}
 	}
 	// **********달력 프린트 종료********** 
