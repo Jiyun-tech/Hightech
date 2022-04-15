@@ -39,27 +39,27 @@ int main () {
 	int inputTicketSelect; 		// 권종 선택 
 	char inputSocialID[7]; 		// 사용자 주민등록번호 
 	int inputNumberOfTicket;	// 티켓 수량 
-	int inputBenefit; 			// 우대사항 
+	int inputBenefit; 		// 우대사항 
 	
 	// 계산 변수 선언 
 	int birthYearIndex; 		// 1900년대 & 2000년대생 구분
-	int userBirthYear;			// 사용자 생년 
-	int userBirthMonth;			// 사용자 생월 
-	int userBirthDay;			// 사용자 생일 
-	int userAge;				// **사용자 나이 
-	int ticketPrice;			// **권종 & 나이에 따른 티켓 가격 
+	int userBirthYear;		// 사용자 생년 
+	int userBirthMonth;		// 사용자 생월 
+	int userBirthDay;		// 사용자 생일 
+	int userAge;			// **사용자 나이 
+	int ticketPrice;		// **권종 & 나이에 따른 티켓 가격 
 	int totalTicketPrice;		// **티켓 가격 X 수량 
 	float appliedBenefit;		// 적용된 베네핏 금액 (종류에 따른 금액 상수 변수로 받아올 예정) 
 	int discountedTicketPrice;	// **우대사항 적용으로 인한 할인 금액
-	int discountedTicketNumber; // **우대사항 적용된 티켓 수량 
+	int discountedTicketNumber; 	// **우대사항 적용된 티켓 수량 
 	int finalTicketPrice;		// **totalTicketPrice - discountedTicketPrice
-	int continueTicketPurchase; // 티켓 발권 프로세스 반복 여부 선택 
-	int NewPurchase;			// 새로운 주문 시작 여부 선택 
+	int continueTicketPurchase; 	// 티켓 발권 프로세스 반복 여부 선택 
+	int NewPurchase;		// 새로운 주문 시작 여부 선택 
 	
 	
 	do {
 	// 누적 데이터 변수 선언
-	int accumulatedFinalPrice = 0; // 총 주문 금액 
+	int accumulatedFinalPrice = 0; 	// 총 주문 금액 
 	int accumulatedTicketNumber = 0; // 총 주문 티켓 수량 
 	
 	
