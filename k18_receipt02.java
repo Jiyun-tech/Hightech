@@ -2,7 +2,7 @@ import java.text.DecimalFormat;		// 숫자 출력 형식에 콤마를 추가하기 위한 클래스
 import java.text.SimpleDateFormat;	// 현재 날짜,시간 출력 양식 지정 위한 클래스
 import java.util.ArrayList;
 import java.util.Calendar;			// 현재 날짜,시간 받아오기 위한 클래스
-//KOPO18 서지윤 / 2022.04.26
+//KOPO18 서지윤 / 2022.04.26~27
 //5강_리포팅 연습_#3-2. 영수증 (2) 다이소 (한글 상품명 자르기 유의)
 public class k18_receipt02 {
 
@@ -63,7 +63,7 @@ public class k18_receipt02 {
 		
 		// #4. 출력 상품명 글자수 지정하기
 		ArrayList<String> k18_itemnamePrinteAll = new ArrayList<String>();			// 출력용 상품명 저장할 ArrayList 선언.
-		int k18_printLength = 22;													// 출력할 상품명 길이(byte) 지정
+		int k18_printLength = 23;													// 출력할 상품명 길이(byte) 지정
 		for (int k18_i = 0; k18_i < k18_itemnameAll.size(); k18_i++) { 				// 상품 종류만큼 for문 반복
 			byte[] k18_byteString  = k18_itemnameAll.get(k18_i).getBytes(); 		// 상품명을 16진수로 변환하여 byte배열에 저장.
 			if (k18_byteString.length == k18_printLength) {							// 조건(1) : 상품명 길이 == 출력 지정 길이
@@ -132,9 +132,9 @@ public class k18_receipt02 {
 		// 현재 날짜 및 시간 출력 시, SimpleDateFormat 사용하며 Calendar 함수를 통해 현재 날짜&시간 받아옴.
 		System.out.printf("%-15s%33s\n", "[POS 1058231]", k18_sdf.format(k18_cal.getTime()));
 		// 금액 출력 시, DecimalFormat 사용하여 숫자에 콤마 찍음 => 문자열로 형 변환되어 %s 형식으로 출력
-		System.out.printf("================================================\n"); // 기호 : 48개
+		System.out.printf("================================================\n"); // 기호 : 41개
 		for (int k18_i = 0; k18_i < k18_itempriceAll.size(); k18_i++) {
-			System.out.printf("%-13s%11s%3s%11s\n", k18_itemnamePrinteAll.get(k18_i),
+			System.out.printf("%-7s%11s%3s%11s\n", k18_itemnamePrinteAll.get(k18_i),
 								k18_comma.format(k18_itempriceAll.get(k18_i)),
 								k18_comma.format(k18_itemamountAll.get(k18_i)),
 								k18_comma.format(k18_itempriceAll.get(k18_i) * k18_itemamountAll.get(k18_i)));
